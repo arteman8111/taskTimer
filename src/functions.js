@@ -1,26 +1,25 @@
-import { 
-  PAGE_TIMELINE, 
-  PAGE_ACTIVITIES, 
-  PAGE_PROGRESS,
-  HOURS_IN_DAY 
+import {
+  PAGE_TIMELINE,
+  HOURS_IN_DAY,
+  MIDNIGHT_HOUR
 } from './constants'
+import { isPageValid } from './validators';
 
 // Функция для хранения состояния кэша для отрисовки нужной страницы
 export function normalizePageHash() {
-  const hash = window.location.hash.slice(1)
+  const page = window.location.hash.slice(1)
 
-  if ([PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE].includes(hash)) {
-    return hash
-  } else {
-    window.location.hash = PAGE_TIMELINE
+  if (isPageValid(page)){
+    return page
   }
+
   return PAGE_TIMELINE
 }
 
 export function generateTimeLineItems() {
   let timeLineItems = [];
-  for (let hour = 0; hour < HOURS_IN_DAY; hour++) {
-    timeLineItems.push({['hour']:hour});
+  for (let hour = MIDNIGHT_HOUR; hour < HOURS_IN_DAY; hour++) {
+    timeLineItems.push({ ['hour']: hour });
     // Можно и так timeLineItems.push({hour});
   }
   return timeLineItems;

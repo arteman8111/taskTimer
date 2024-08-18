@@ -1,22 +1,25 @@
 <script setup>
 import BaseButton from './BaseButton.vue'
 import { XMarkIcon } from '@heroicons/vue/24/solid'
-
+import {validateSelectOptions} from '@/validators'
 // const props = defineProps(['options', 'placeholder', 'selected'])
 // Записываем таким образом чтобы зафиксировать передаваемый тип данных
+// Пропсы будут каждый раз смотерться учитывая что есть цикл. То есть каждый раз 
+// будет проверка валидатором
 defineProps({
-    selected: Number,
+    selected: {
+      type: Number,
+      required: true
+    },
     options: {
-      required: true,
       type: Array,
-      validator(options) {
-        return options.every(({value, label}) => typeof value === 'number' && typeof label === 'string')
-      }
+      required: true,
+      validator: validateSelectOptions,
     },
     placeholder: {
-      // default: 'Rest',
+      type: String,
       required: true,
-      type: String
+      // default: 'Rest',
     }
 })
 

@@ -3,6 +3,8 @@ import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/solid
 export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activities'
 export const PAGE_PROGRESS = 'progress'
+export const PAGE_ANOTHER = 'another'
+export const MIDNIGHT_HOUR = 0;
 export const HOURS_IN_DAY = 24;
 
 export const NAV_ITEMS = {
