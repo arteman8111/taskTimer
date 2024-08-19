@@ -3,6 +3,7 @@ import BaseButton from './BaseButton.vue'
 import { XMarkIcon } from '@heroicons/vue/24/solid'
 import {validateSelectOptions} from '@/validators'
 import { computed } from 'vue';
+import { isUndefinedOrNull, isNumberOrNull } from '@/validators';
 // const props = defineProps(['options', 'placeholder', 'selected'])
 // Записываем таким образом чтобы зафиксировать передаваемый тип данных
 // Пропсы будут каждый раз смотерться учитывая что есть цикл. То есть каждый раз 
@@ -24,17 +25,14 @@ const props = defineProps({
     }
 })
 
+// Добавляем валидатор для эмитов.
 const emit = defineEmits({
-  select(value){
-    return typeof value === 'number'
-  }
+  select: isNumberOrNull
 })
 // computed свойства, внутрь вкидывем callback, работает как обычная функия
 // но с условием что это вычисляемое свойство. Автоматически будет пересчитываться
 // метод при изменении его ref-свйоств. Автоматически кэшируется и обновляются данные
-const isNotSelected = computed(() => {
-  return props.selected === null || props.selected === undefined
-});
+const isNotSelected = computed(() => isUndefinedOrNull(props.selected));
 
 </script>
 <template>
