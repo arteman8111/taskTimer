@@ -26,7 +26,7 @@ const options = [
   { value: 3, label: 'Training' }
 ]
 
-const selectedActivityId = ref(1)
+const selectedActivityId = ref()
 </script>
 <!-- Всю хуйню из дочерних он передает в родитель $event, там мы сравниваем -->
 <!-- Можно передавать сколько угодно значений -->
