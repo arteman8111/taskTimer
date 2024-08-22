@@ -15,6 +15,7 @@ const props = defineProps({
   }
 })
 
+
 const formattedHour = `${props.hour.toString().padStart(2,0)}:00`;
 
 const classes = [
