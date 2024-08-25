@@ -26,6 +26,9 @@ function goTo(page) {
 function deleteActivity(activity){
   activities.value.splice(activities.value.indexOf(activity), 1)
 }
+function createActivity(activity){
+  activities.value.push(activity);
+}
 </script>
 <template>
   <!-- Событие через эмиты -->
@@ -41,6 +44,7 @@ function deleteActivity(activity){
       :activities="activities"
       v-show="currentPage === PAGE_ACTIVITIES"
       @delete-activity="deleteActivity"
+      @create-activity="createActivity"
       />
       <!-- Тоже самое что и ---] @delete-activity="deleteActivity($event)" -->
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
