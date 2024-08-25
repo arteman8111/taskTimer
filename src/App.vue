@@ -41,7 +41,8 @@ function deleteActivity(activity){
       :activities="activities"
       v-show="currentPage === PAGE_ACTIVITIES"
       @delete-activity="deleteActivity"
-    />
+      />
+      <!-- Тоже самое что и ---] @delete-activity="deleteActivity($event)" -->
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
   <TheNav :current-page="currentPage" @navigate="goTo($event)" />

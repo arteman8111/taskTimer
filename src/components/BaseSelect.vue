@@ -4,6 +4,7 @@ import { XMarkIcon } from '@heroicons/vue/24/solid'
 import {validateSelectOptions} from '@/validators'
 import { computed } from 'vue';
 import { isUndefinedOrNull, isNumberOrNull } from '@/validators';
+import { BUTTON_TYPE_NEUTRAL } from '@/constants';
 // const props = defineProps(['options', 'placeholder', 'selected'])
 // Записываем таким образом чтобы зафиксировать передаваемый тип данных
 // Пропсы будут каждый раз смотерться учитывая что есть цикл. То есть каждый раз 
@@ -36,7 +37,7 @@ const isNotSelected = computed(() => isUndefinedOrNull(props.selected));
 </script>
 <template>
   <div class="flex gap-2">
-    <BaseButton @click="emit('select', null)">
+    <BaseButton :type="BUTTON_TYPE_NEUTRAL" @click="emit('select', null)">
         <XMarkIcon class="h-8" />
     </BaseButton>
 
