@@ -7,11 +7,19 @@ export const PAGE_ANOTHER = 'another'
 export const MIDNIGHT_HOUR = 0;
 export const HOURS_IN_DAY = 24;
 
+export const BUTTON_TYPE_DANGER = 'danger';
+export const BUTTON_TYPE_NEUTRAL = 'neutral';
+
+export const button_types = [
+  BUTTON_TYPE_NEUTRAL,
+  BUTTON_TYPE_DANGER,
+]
+
 export const NAV_ITEMS = {
-    [PAGE_TIMELINE]: ClockIcon,
-    [PAGE_ACTIVITIES]: ListBulletIcon,
-    [PAGE_PROGRESS]: ChartBarIcon
-  }
+  [PAGE_TIMELINE]: ClockIcon,
+  [PAGE_ACTIVITIES]: ListBulletIcon,
+  [PAGE_PROGRESS]: ChartBarIcon
+}
 
 export const PERIOD_SELECT_OPTIONS = [
   {
