@@ -16,12 +16,15 @@ import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants'
 // рефнутое значение которое можем менять
 const currentPage = ref(normalizePageHash())
 const timelineItems = generateTimeLineItems()
-const activities = ['Coding', 'Reading', 'Training']
-const activitySelectOptions = generateActivitySelectOptions(activities)
+const activities = ref(['Coding', 'Reading', 'Training'])
+const activitySelectOptions = generateActivitySelectOptions(activities.value)
 // console.log(activitySelectOptions);
 
 function goTo(page) {
   currentPage.value = page
+}
+function deleteActivity(activity){
+  activities.value.splice(activities.value.indexOf(activity), 1)
 }
 </script>
 <template>
@@ -34,7 +37,11 @@ function goTo(page) {
       :timeline-items="timelineItems"
       :activity-select-options="activitySelectOptions"
     />
-    <TheActivities :activities="activities" v-show="currentPage === PAGE_ACTIVITIES" />
+    <TheActivities
+      :activities="activities"
+      v-show="currentPage === PAGE_ACTIVITIES"
+      @delete-activity="deleteActivity"
+    />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
   <TheNav :current-page="currentPage" @navigate="goTo($event)" />
