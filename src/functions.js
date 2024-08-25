@@ -24,3 +24,7 @@ export function generateTimeLineItems() {
   }
   return timeLineItems;
 }
+
+export function generateActivitySelectOptions(activities){
+  return activities.map((label, value) => ({label, value}))
+}

@@ -1,7 +1,7 @@
 <!-- Если передавать в тэг :class массив то он просто его соберет в строку -->
 <script setup>
 import BaseSelect from './BaseSelect.vue'
-import { isTimelineItemValid } from '../validators'
+import { isTimelineItemValid, validateSelectOptions } from '../validators'
 import { ref } from 'vue'
 import TimeLineApp from './TimeLineApp.vue';
 
@@ -12,16 +12,15 @@ defineProps({
     required: true, // Указываем что обязательно для вкладывания
     type: Object, // Указываем тип данных
     validator: isTimelineItemValid
+  },
+  activitySelectOptions: {
+    required: true,
+    type: Array,
+    validator: validateSelectOptions 
   }
 })
 
-const options = [
-  { value: 1, label: 'Coding' },
-  { value: 2, label: 'Reading' },
-  { value: 3, label: 'Training' }
-]
-
-const selectedActivityId = ref()
+const selectedActivityId = ref(0)
 </script>
 <!-- Всю хуйню из дочерних он передает в родитель $event, там мы сравниваем -->
 <!-- Можно передавать сколько угодно значений -->
@@ -34,7 +33,7 @@ const selectedActivityId = ref()
           <TimeLineApp :hour="timelineItem.hour"/>
           <BaseSelect
             :selected="selectedActivityId"
-            :options="options"
+            :options="activitySelectOptions"
             :placeholder="'Rest'"
             @select="selectedActivityId = $event"
           />
