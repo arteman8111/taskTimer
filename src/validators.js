@@ -24,12 +24,24 @@ export function validateSelectOptions(options) {
     return options.every(isSelectOptionValid)
 }
 
+export function validateActivities(activites){
+    return activites.every(isActivityValid);
+}
+
 function isSelectOptionValid({ value, label }) {
     return isNumber(value) && isString(label);
 }
 
 export function isHourValid(hour){
     return isNumber(hour) && isBetween(hour, MIDNIGHT_HOUR, HOURS_IN_DAY - 1)
+}
+
+export function isActivityValid(activity){
+    return isNotEmptyString(activity)
+}
+
+function isNotEmptyString(value){
+    return isString(value) && value.length > 0
 }
 
 function isBetween(value, start, end) {

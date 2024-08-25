@@ -1,9 +1,3 @@
-<template>
-    <div>
-        <a href="#" :class="classes">{{ formattedHour }}</a>
-    </div>
-</template>
-
 <script setup>
 import { isHourValid } from '@/validators';
 
@@ -26,6 +20,8 @@ const classes = [
 ]
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<template>
+  <div>
+      <a href="#" :class="classes">{{ formattedHour }}</a>
+  </div>
+</template>

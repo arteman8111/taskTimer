@@ -12,6 +12,7 @@ import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants'
 // рефнутое значение которое можем менять
 const currentPage = ref(normalizePageHash())
 const timelineItems = generateTimeLineItems();
+const activities = ['Coding', 'Reading', 'Training']
 
 function goTo(page){
   currentPage.value = page;
@@ -23,7 +24,7 @@ function goTo(page){
   <TheHeader @navigate="goTo($event)" />
   <main class="flex flex-col flex-grow">
     <TheTimeLine v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems"/>
-    <TheActivities v-show="currentPage === PAGE_ACTIVITIES"/>
+    <TheActivities :activities="activities" v-show="currentPage === PAGE_ACTIVITIES"/>
     <TheProgress v-show="currentPage === PAGE_PROGRESS"/>
   </main>
   <TheNav :current-page="currentPage" @navigate="goTo($event)"/>
